@@ -1,0 +1,61 @@
+Chroma Vector Database Benchmark Results - 2025-06-08T12:40:57.555512
+======================================================================
+
+SYSTEM INFORMATION:
+- os: Darwin 24.5.0
+- cpu: arm
+- cpu_cores: 8
+- ram_gb: 16.0
+- python_version: 3.13.2
+- architecture: 64bit
+- machine: arm64
+- timestamp: 2025-06-08T12:28:12.399746
+
+WRITE PERFORMANCE (batch size 10)
+- Total points inserted: 100000
+- Successful batches: 10000
+- Average batch time: 0.0478s
+- Throughput: 209.01 vectors/sec
+- Percentiles: P50=0.0221s, P90=0.0281s, P99=0.0836s
+
+WRITE PERFORMANCE (batch size 100)
+- Total points inserted: 100000
+- Successful batches: 1000
+- Average batch time: 0.0520s
+- Throughput: 1922.34 vectors/sec
+- Percentiles: P50=0.0510s, P90=0.0618s, P99=0.0690s
+
+WRITE PERFORMANCE (batch size 1000)
+- Total points inserted: 100000
+- Successful batches: 100
+- Average batch time: 0.4517s
+- Throughput: 2213.83 vectors/sec
+- Percentiles: P50=0.4504s, P90=0.4615s, P99=0.4754s
+
+READ PERFORMANCE (10 queries)
+- Successful queries: 10
+- Average query time: 0.1208s
+- Throughput: 8.28 queries/sec
+- Percentiles: P50=0.1292s, P90=0.2272s, P99=0.2468s
+
+READ PERFORMANCE (100 queries)
+- Successful queries: 100
+- Average query time: 0.1096s
+- Throughput: 9.12 queries/sec
+- Percentiles: P50=0.1070s, P90=0.2174s, P99=0.2285s
+
+READ PERFORMANCE (1000 queries)
+- Successful queries: 1000
+- Average query time: 0.1099s
+- Throughput: 9.10 queries/sec
+- Percentiles: P50=0.1048s, P90=0.2194s, P99=0.2407s
+
+RECALL PERFORMANCE
+- Recall@100: 1.0000
+- Standard deviation: 0.0000
+- Sample size: 50
+
+SUMMARY
+======================================================================
+Best write performance: 2213.83 vectors/sec (batch size 1000)
+Best read performance: 9.12 queries/sec (100 queries)

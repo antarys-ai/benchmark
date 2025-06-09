@@ -1,0 +1,516 @@
+// @/lib/bench/dbpedia/index.ts
+
+export const data = {
+  "metadata": {
+    "generated_at": "2025-06-08T20:57:34.177203",
+    "databases": [
+      "Chroma",
+      "Antarys",
+      "Qdrant",
+      "Milvus"
+    ],
+    "comparison_version": "1.0"
+  },
+  "write_performance": {
+    "Chroma": {
+      "throughput_vectors_per_sec": 2213.834400172162,
+      "avg_batch_time": 0.4517049694061279,
+      "batch_size": 1000,
+      "total_points": 100000,
+      "percentiles": {
+        "p50": 0.4503990411758423,
+        "p90": 0.46153576374053956,
+        "p99": 0.4753772497177124
+      },
+      "successful_batches": 100
+    },
+    "Antarys": {
+      "throughput_vectors_per_sec": 2220.079935081395,
+      "avg_batch_time": 0.4504342317581177,
+      "batch_size": 1000,
+      "total_points": 100000,
+      "percentiles": {
+        "p50": 0.44787895679473877,
+        "p90": 0.4661406040191651,
+        "p99": 0.4931927680969238
+      },
+      "successful_batches": 100
+    },
+    "Qdrant": {
+      "throughput_vectors_per_sec": 743.15885654519,
+      "avg_batch_time": 1.3456073236465453,
+      "batch_size": 1000,
+      "total_points": 100000,
+      "percentiles": {
+        "p50": 1.344355583190918,
+        "p90": 1.4125539779663085,
+        "p99": 1.4610910081863406
+      },
+      "successful_batches": 100
+    },
+    "Milvus": {
+      "throughput_vectors_per_sec": 1961.0982313555355,
+      "avg_batch_time": 0.5099183630943298,
+      "batch_size": 1000,
+      "total_points": 100000,
+      "percentiles": {
+        "p50": 0.49699103832244873,
+        "p90": 0.6774205446243287,
+        "p99": 0.8306155323982244
+      },
+      "successful_batches": 100
+    }
+  },
+  "read_performance": {
+    "Chroma": {
+      "queries_10": {
+        "throughput_queries_per_sec": 8.280906529675047,
+        "avg_query_time": 0.12075972557067871,
+        "successful_queries": 10,
+        "percentiles": {
+          "p50": 0.1292099952697754,
+          "p90": 0.2271808862686157,
+          "p99": 0.24679733991622926
+        }
+      },
+      "queries_100": {
+        "throughput_queries_per_sec": 9.12458359051924,
+        "avg_query_time": 0.10959404230117797,
+        "successful_queries": 100,
+        "percentiles": {
+          "p50": 0.10700833797454834,
+          "p90": 0.21736485958099366,
+          "p99": 0.2284780526161195
+        }
+      },
+      "queries_1000": {
+        "throughput_queries_per_sec": 9.097263206915896,
+        "avg_query_time": 0.10992316889762878,
+        "successful_queries": 1000,
+        "percentiles": {
+          "p50": 0.10484695434570312,
+          "p90": 0.21935739517211914,
+          "p99": 0.24071357011795044
+        }
+      }
+    },
+    "Antarys": {
+      "queries_10": {
+        "throughput_queries_per_sec": 58.43480199226777,
+        "avg_query_time": 0.017113089561462402,
+        "successful_queries": 10,
+        "percentiles": {
+          "p50": 0.01754450798034668,
+          "p90": 0.020963716506957997,
+          "p99": 0.04432185173034668
+        }
+      },
+      "queries_100": {
+        "throughput_queries_per_sec": 74.71657766585156,
+        "avg_query_time": 0.013383910655975342,
+        "successful_queries": 100,
+        "percentiles": {
+          "p50": 0.01730799674987793,
+          "p90": 0.017789936065673827,
+          "p99": 0.019237790107727127
+        }
+      },
+      "queries_1000": {
+        "throughput_queries_per_sec": 75.7091824322229,
+        "avg_query_time": 0.01320843744277954,
+        "successful_queries": 1000,
+        "percentiles": {
+          "p50": 0.01729285717010498,
+          "p90": 0.017918086051940917,
+          "p99": 0.01920316934585571
+        }
+      }
+    },
+    "Qdrant": {
+      "queries_10": {
+        "throughput_queries_per_sec": 10.033970446668313,
+        "avg_query_time": 0.09966144561767579,
+        "successful_queries": 10,
+        "percentiles": {
+          "p50": 0.03570258617401123,
+          "p90": 0.2540480613708495,
+          "p99": 0.4465950918197632
+        }
+      },
+      "queries_100": {
+        "throughput_queries_per_sec": 26.470057743962847,
+        "avg_query_time": 0.03777853488922119,
+        "successful_queries": 100,
+        "percentiles": {
+          "p50": 0.03459751605987549,
+          "p90": 0.05599327087402344,
+          "p99": 0.0628048872947693
+        }
+      },
+      "queries_1000": {
+        "throughput_queries_per_sec": 26.800566068207736,
+        "avg_query_time": 0.03731264472007752,
+        "successful_queries": 1000,
+        "percentiles": {
+          "p50": 0.03445744514465332,
+          "p90": 0.055243706703186034,
+          "p99": 0.06332098960876464
+        }
+      }
+    },
+    "Milvus": {
+      "queries_10": {
+        "throughput_queries_per_sec": 5.652280315534478,
+        "avg_query_time": 0.17691974639892577,
+        "successful_queries": 10,
+        "percentiles": {
+          "p50": 0.16934549808502197,
+          "p90": 0.2834837436676025,
+          "p99": 0.3803348779678345
+        }
+      },
+      "queries_100": {
+        "throughput_queries_per_sec": 18.27701784960891,
+        "avg_query_time": 0.05471352100372315,
+        "successful_queries": 100,
+        "percentiles": {
+          "p50": 0.04591012001037598,
+          "p90": 0.0859686613082886,
+          "p99": 0.2032460594177248
+        }
+      },
+      "queries_1000": {
+        "throughput_queries_per_sec": 14.47612159066315,
+        "avg_query_time": 0.0690792760848999,
+        "successful_queries": 1000,
+        "percentiles": {
+          "p50": 0.0478900671005249,
+          "p90": 0.12560315132141114,
+          "p99": 0.3377915358543396
+        }
+      }
+    }
+  },
+  "recall_performance": {
+    "Chroma": {
+      "recall_at_100": 1.0,
+      "recall_std": 0.0,
+      "recall_samples": 50,
+      "note": "Consistency check \u2013 Chroma doesn\u2019t support exact search"
+    },
+    "Antarys": {
+      "recall_at_100": 1.0,
+      "recall_std": 0.0,
+      "recall_samples": 50,
+      "note": ""
+    },
+    "Qdrant": {
+      "recall_at_100": 1.0,
+      "recall_std": 0.0,
+      "recall_samples": 50,
+      "note": ""
+    },
+    "Milvus": {
+      "recall_at_100": 0.9996,
+      "recall_std": 0.0028000000000000026,
+      "recall_samples": 50,
+      "note": ""
+    }
+  },
+  "system_info": {
+    "Chroma": {
+      "os": "Darwin 24.5.0",
+      "cpu": "arm",
+      "cpu_cores": 8,
+      "ram_gb": 16.0,
+      "python_version": "3.13.2",
+      "architecture": "64bit",
+      "machine": "arm64",
+      "timestamp": "2025-06-08T12:28:12.399746"
+    },
+    "Antarys": {
+      "os": "Darwin 24.5.0",
+      "cpu": "arm",
+      "cpu_cores": 8,
+      "ram_gb": 16.0,
+      "python_version": "3.13.2",
+      "architecture": "64bit",
+      "machine": "arm64",
+      "timestamp": "2025-06-08T11:35:15.186884"
+    },
+    "Qdrant": {
+      "os": "Darwin 24.5.0",
+      "cpu": "arm",
+      "cpu_cores": 8,
+      "ram_gb": 16.0,
+      "python_version": "3.13.2",
+      "architecture": "64bit",
+      "machine": "arm64",
+      "timestamp": "2025-06-08T11:41:30.110651"
+    },
+    "Milvus": {
+      "os": "Darwin 24.5.0",
+      "cpu": "arm",
+      "cpu_cores": 8,
+      "ram_gb": 16.0,
+      "python_version": "3.13.2",
+      "architecture": "64bit",
+      "machine": "arm64",
+      "timestamp": "2025-06-08T20:36:59.308565"
+    }
+  },
+  "charts": {
+    "write_throughput": [
+      {
+        "database": "Chroma",
+        "throughput": 2213.834400172162,
+        "batch_size": 1000
+      },
+      {
+        "database": "Antarys",
+        "throughput": 2220.079935081395,
+        "batch_size": 1000
+      },
+      {
+        "database": "Qdrant",
+        "throughput": 743.15885654519,
+        "batch_size": 1000
+      },
+      {
+        "database": "Milvus",
+        "throughput": 1961.0982313555355,
+        "batch_size": 1000
+      }
+    ],
+    "read_throughput": [
+      {
+        "database": "Chroma",
+        "throughput": 9.097263206915896,
+        "avg_latency": 109.92316889762878
+      },
+      {
+        "database": "Antarys",
+        "throughput": 75.7091824322229,
+        "avg_latency": 13.208437442779541
+      },
+      {
+        "database": "Qdrant",
+        "throughput": 26.800566068207736,
+        "avg_latency": 37.312644720077515
+      },
+      {
+        "database": "Milvus",
+        "throughput": 14.47612159066315,
+        "avg_latency": 69.0792760848999
+      }
+    ],
+    "latency_comparison": [
+      {
+        "database": "Chroma",
+        "p50": 104.84695434570312,
+        "p90": 219.35739517211914,
+        "p99": 240.71357011795044
+      },
+      {
+        "database": "Antarys",
+        "p50": 17.29285717010498,
+        "p90": 17.918086051940918,
+        "p99": 19.203169345855713
+      },
+      {
+        "database": "Qdrant",
+        "p50": 34.45744514465332,
+        "p90": 55.243706703186035,
+        "p99": 63.32098960876464
+      },
+      {
+        "database": "Milvus",
+        "p50": 47.8900671005249,
+        "p90": 125.60315132141115,
+        "p99": 337.7915358543396
+      }
+    ],
+    "recall_comparison": [
+      {
+        "database": "Chroma",
+        "recall": 1.0,
+        "std_dev": 0.0,
+        "samples": 50
+      },
+      {
+        "database": "Antarys",
+        "recall": 1.0,
+        "std_dev": 0.0,
+        "samples": 50
+      },
+      {
+        "database": "Qdrant",
+        "recall": 1.0,
+        "std_dev": 0.0,
+        "samples": 50
+      },
+      {
+        "database": "Milvus",
+        "recall": 0.9996,
+        "std_dev": 0.0028000000000000026,
+        "samples": 50
+      }
+    ],
+    "percentile_comparison": [
+      {
+        "database": "Chroma",
+        "operation": "write",
+        "p50": 450.3990411758423,
+        "p90": 461.53576374053955,
+        "p99": 475.3772497177124
+      },
+      {
+        "database": "Antarys",
+        "operation": "write",
+        "p50": 447.87895679473877,
+        "p90": 466.1406040191651,
+        "p99": 493.1927680969238
+      },
+      {
+        "database": "Qdrant",
+        "operation": "write",
+        "p50": 1344.355583190918,
+        "p90": 1412.5539779663086,
+        "p99": 1461.0910081863406
+      },
+      {
+        "database": "Milvus",
+        "operation": "write",
+        "p50": 496.99103832244873,
+        "p90": 677.4205446243286,
+        "p99": 830.6155323982243
+      }
+    ]
+  },
+  "rankings": {
+    "write_throughput": [
+      {
+        "rank": 1,
+        "database": "Antarys",
+        "value": 2220.079935081395
+      },
+      {
+        "rank": 2,
+        "database": "Chroma",
+        "value": 2213.834400172162
+      },
+      {
+        "rank": 3,
+        "database": "Milvus",
+        "value": 1961.0982313555355
+      },
+      {
+        "rank": 4,
+        "database": "Qdrant",
+        "value": 743.15885654519
+      }
+    ],
+    "read_throughput": [
+      {
+        "rank": 1,
+        "database": "Antarys",
+        "value": 75.7091824322229
+      },
+      {
+        "rank": 2,
+        "database": "Qdrant",
+        "value": 26.800566068207736
+      },
+      {
+        "rank": 3,
+        "database": "Milvus",
+        "value": 14.47612159066315
+      },
+      {
+        "rank": 4,
+        "database": "Chroma",
+        "value": 9.097263206915896
+      }
+    ],
+    "recall": [
+      {
+        "rank": 1,
+        "database": "Chroma",
+        "value": 1.0
+      },
+      {
+        "rank": 2,
+        "database": "Antarys",
+        "value": 1.0
+      },
+      {
+        "rank": 3,
+        "database": "Qdrant",
+        "value": 1.0
+      },
+      {
+        "rank": 4,
+        "database": "Milvus",
+        "value": 0.9996
+      }
+    ],
+    "overall": [
+      {
+        "rank": 1,
+        "database": "Antarys",
+        "score": 0.925
+      },
+      {
+        "rank": 2,
+        "database": "Chroma",
+        "score": 0.625
+      },
+      {
+        "rank": 3,
+        "database": "Qdrant",
+        "score": 0.525
+      },
+      {
+        "rank": 4,
+        "database": "Milvus",
+        "score": 0.425
+      }
+    ]
+  },
+  "summary": {
+    "total_databases": 4,
+    "write_stats": {
+      "max_throughput": 2220.079935081395,
+      "min_throughput": 743.15885654519,
+      "avg_throughput": 1784.5428557885707,
+      "median_throughput": 2087.466315763849,
+      "std_dev": 704.6597789098657
+    },
+    "read_stats": {
+      "max_throughput": 75.7091824322229,
+      "min_throughput": 9.097263206915896,
+      "avg_throughput": 31.52078332450242,
+      "median_throughput": 20.638343829435442,
+      "std_dev": 30.376689608616157
+    },
+    "recall_stats": {
+      "max_recall": 1.0,
+      "min_recall": 0.9996,
+      "avg_recall": 0.9999,
+      "median_recall": 1.0,
+      "std_dev": 0.00019999999999997797
+    }
+  }
+} as const;
+
+// Type definitions for better TypeScript support
+export type DatabaseName = "Chroma" | "Antarys" | "Qdrant" | "Milvus";
+
+export type BenchmarkData = typeof data;
+
+export type WritePerformance = BenchmarkData["write_performance"][DatabaseName];
+
+export type ReadPerformance = BenchmarkData["read_performance"][DatabaseName];
+
+export type RecallPerformance =
+  BenchmarkData["recall_performance"][DatabaseName];

@@ -1,0 +1,40 @@
+================================================================================
+VECTOR DATABASE BENCHMARK COMPARISON REPORT
+================================================================================
+Generated: 2025-06-08T20:57:34.190256
+Databases tested: Chroma, Antarys, Qdrant, Milvus
+NOTE: Write performance based on batch_size=1000 only
+
+OVERALL PERFORMANCE RANKINGS
+----------------------------------------
+1. Antarys (Score: 0.925)
+2. Chroma (Score: 0.625)
+3. Qdrant (Score: 0.525)
+4. Milvus (Score: 0.425)
+
+WRITE PERFORMANCE RANKINGS (batch_size=1000)
+----------------------------------------
+1. Antarys: 2220.08 vectors/sec
+2. Chroma: 2213.83 vectors/sec
+3. Milvus: 1961.10 vectors/sec
+4. Qdrant: 743.16 vectors/sec
+
+READ PERFORMANCE RANKINGS
+----------------------------------------
+1. Antarys: 75.71 queries/sec
+2. Qdrant: 26.80 queries/sec
+3. Milvus: 14.48 queries/sec
+4. Chroma: 9.10 queries/sec
+
+RECALL PERFORMANCE RANKINGS
+----------------------------------------
+1. Chroma: 1.0000
+2. Antarys: 1.0000
+3. Qdrant: 1.0000
+4. Milvus: 0.9996
+
+SUMMARY STATISTICS
+----------------------------------------
+Write Throughput (batch_size=1000) - Max: 2220.08, Avg: 1784.54 vectors/sec
+Read Throughput - Max: 75.71, Avg: 31.52 queries/sec
+Recall@100 - Max: 1.0000, Avg: 0.9999

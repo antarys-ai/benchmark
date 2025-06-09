@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "generated_at": 1749369074,
+    "results_directory": "./query_results",
+    "files_processed": 4,
+    "analysis_version": "1.0"
+  },
+  "summary": {
+    "total_tests": 4,
+    "databases_tested": [
+      "chromadb",
+      "qdrant",
+      "milvus",
+      "antarys"
+    ],
+    "database_count": 4,
+    "performance_comparison": {
+      "chromadb": {
+        "wps": 3177.32,
+        "qps": 340.03,
+        "upsert_time": 0.3147,
+        "query_time": 0.0029,
+        "total_vectors": 1000
+      },
+      "qdrant": {
+        "wps": 2313.73,
+        "qps": 19.43,
+        "upsert_time": 0.4322,
+        "query_time": 0.0515,
+        "total_vectors": 1000
+      },
+      "milvus": {
+        "wps": 224.18,
+        "qps": 4.54,
+        "upsert_time": 4.4607,
+        "query_time": 0.2205,
+        "total_vectors": 1000
+      },
+      "antarys": {
+        "wps": 5184.86,
+        "qps": 602.37,
+        "upsert_time": 0.1929,
+        "query_time": 0.0017,
+        "total_vectors": 1000
+      }
+    },
+    "database_details": {
+      "chromadb": {
+        "collection_name": "image_embeddings_1749366614",
+        "model": "resnet34",
+        "dimensions": 512,
+        "distance_metric": "cosine",
+        "index_type": "",
+        "results_count": 10,
+        "timestamp": 1749366616
+      },
+      "qdrant": {
+        "collection_name": "image_embeddings_1749366462",
+        "model": "resnet34",
+        "dimensions": 512,
+        "distance_metric": "COSINE",
+        "index_type": "",
+        "results_count": 10,
+        "timestamp": 1749366464
+      },
+      "milvus": {
+        "collection_name": "image_embeddings_1749369367",
+        "model": "resnet34",
+        "dimensions": 512,
+        "distance_metric": "COSINE",
+        "index_type": "HNSW",
+        "results_count": 10,
+        "timestamp": 1749369368
+      },
+      "antarys": {
+        "collection_name": "image_embeddings_1749368715",
+        "model": "resnet34",
+        "dimensions": 512,
+        "distance_metric": "",
+        "index_type": "",
+        "results_count": 10,
+        "timestamp": 1749368716
+      }
+    },
+    "best_performers": {
+      "highest_wps": {
+        "database": "antarys",
+        "value": 5184.86
+      },
+      "highest_qps": {
+        "database": "antarys",
+        "value": 602.37
+      },
+      "fastest_upsert": {
+        "database": "antarys",
+        "value": 0.1929
+      },
+      "fastest_query": {
+        "database": "antarys",
+        "value": 0.0017
+      }
+    }
+  },
+  "chart_data": {
+    "performance_chart": [
+      {
+        "database": "chromadb",
+        "wps": 3177.32,
+        "qps": 340.03,
+        "total_vectors": 1000
+      },
+      {
+        "database": "qdrant",
+        "wps": 2313.73,
+        "qps": 19.43,
+        "total_vectors": 1000
+      },
+      {
+        "database": "milvus",
+        "wps": 224.18,
+        "qps": 4.54,
+        "total_vectors": 1000
+      },
+      {
+        "database": "antarys",
+        "wps": 5184.86,
+        "qps": 602.37,
+        "total_vectors": 1000
+      }
+    ],
+    "time_comparison": [
+      {
+        "database": "chromadb",
+        "upsert_time": 0.3147,
+        "query_time": 0.0029
+      },
+      {
+        "database": "qdrant",
+        "upsert_time": 0.4322,
+        "query_time": 0.0515
+      },
+      {
+        "database": "milvus",
+        "upsert_time": 4.4607,
+        "query_time": 0.2205
+      },
+      {
+        "database": "antarys",
+        "upsert_time": 0.1929,
+        "query_time": 0.0017
+      }
+    ],
+    "throughput_comparison": [
+      {
+        "database": "chromadb",
+        "writes_per_second": 3177.32,
+        "queries_per_second": 340.03
+      },
+      {
+        "database": "qdrant",
+        "writes_per_second": 2313.73,
+        "queries_per_second": 19.43
+      },
+      {
+        "database": "milvus",
+        "writes_per_second": 224.18,
+        "queries_per_second": 4.54
+      },
+      {
+        "database": "antarys",
+        "writes_per_second": 5184.86,
+        "queries_per_second": 602.37
+      }
+    ],
+    "database_overview": [
+      {
+        "name": "chromadb",
+        "model": "resnet34",
+        "dimensions": 512,
+        "distance": "cosine",
+        "index_type": "",
+        "collection": "image_embeddings_1749366614",
+        "results": 10,
+        "timestamp": 1749366616
+      },
+      {
+        "name": "qdrant",
+        "model": "resnet34",
+        "dimensions": 512,
+        "distance": "COSINE",
+        "index_type": "",
+        "collection": "image_embeddings_1749366462",
+        "results": 10,
+        "timestamp": 1749366464
+      },
+      {
+        "name": "milvus",
+        "model": "resnet34",
+        "dimensions": 512,
+        "distance": "COSINE",
+        "index_type": "HNSW",
+        "collection": "image_embeddings_1749369367",
+        "results": 10,
+        "timestamp": 1749369368
+      },
+      {
+        "name": "antarys",
+        "model": "resnet34",
+        "dimensions": 512,
+        "distance": "",
+        "index_type": "",
+        "collection": "image_embeddings_1749368715",
+        "results": 10,
+        "timestamp": 1749368716
+      }
+    ]
+  },
+  "raw_metrics": [
+    {
+      "timestamp": 1749366616,
+      "collection_name": "image_embeddings_1749366614",
+      "model": "resnet34",
+      "dimensions": 512,
+      "distance": "cosine",
+      "upsert_time": 0.3147311210632324,
+      "total_vectors": 1000,
+      "wps": 3177.3152798546753,
+      "query_time": 0.0029408931732177734,
+      "qps": 340.03275233076613,
+      "query_image": "./test/Afghan_hound/n02088094_4261.JPEG",
+      "results_count": 10,
+      "database": "chromadb"
+    },
+    {
+      "timestamp": 1749366464,
+      "collection_name": "image_embeddings_1749366462",
+      "model": "resnet34",
+      "dimensions": 512,
+      "distance": "COSINE",
+      "upsert_time": 0.4322028160095215,
+      "total_vectors": 1000,
+      "wps": 2313.7285620507614,
+      "query_time": 0.051474809646606445,
+      "qps": 19.426978105705857,
+      "query_image": "./test/Afghan_hound/n02088094_4261.JPEG",
+      "results_count": 10,
+      "database": "qdrant"
+    },
+    {
+      "timestamp": 1749369368,
+      "collection_name": "image_embeddings_1749369367",
+      "model": "resnet34",
+      "dimensions": 512,
+      "distance": "COSINE",
+      "index_type": "HNSW",
+      "upsert_time": 4.460659027099609,
+      "total_vectors": 1000,
+      "wps": 224.18212060701168,
+      "query_time": 0.22046303749084473,
+      "qps": 4.53590774844299,
+      "query_image": "./test/Afghan_hound/n02088094_4261.JPEG",
+      "results_count": 10,
+      "database": "milvus"
+    },
+    {
+      "timestamp": 1749368716,
+      "collection_name": "image_embeddings_1749368715",
+      "model": "resnet34",
+      "dimensions": 512,
+      "upsert_time": 0.1928691864013672,
+      "total_vectors": 1000,
+      "wps": 5184.861400923664,
+      "query_time": 0.0016601085662841797,
+      "qps": 602.3702427114749,
+      "query_image": "./test/Afghan_hound/n02088094_4261.JPEG",
+      "results_count": 10,
+      "database": "antarys"
+    }
+  ]
+}

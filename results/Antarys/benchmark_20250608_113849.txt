@@ -1,0 +1,61 @@
+Antarys Vector Database Benchmark Results - 2025-06-08T11:38:49.407384
+======================================================================
+
+SYSTEM INFORMATION:
+- os: Darwin 24.5.0
+- cpu: arm
+- cpu_cores: 8
+- ram_gb: 16.0
+- python_version: 3.13.2
+- architecture: 64bit
+- machine: arm64
+- timestamp: 2025-06-08T11:35:15.186884
+
+WRITE PERFORMANCE (batch size 10)
+- Total points inserted: 100000
+- Successful batches: 10000
+- Average batch time: 0.0050s
+- Throughput: 2012.18 vectors/sec
+- Percentiles: P50=0.0049s, P90=0.0051s, P99=0.0069s
+
+WRITE PERFORMANCE (batch size 100)
+- Total points inserted: 100000
+- Successful batches: 1000
+- Average batch time: 0.0457s
+- Throughput: 2189.87 vectors/sec
+- Percentiles: P50=0.0447s, P90=0.0480s, P99=0.0559s
+
+WRITE PERFORMANCE (batch size 1000)
+- Total points inserted: 100000
+- Successful batches: 100
+- Average batch time: 0.4504s
+- Throughput: 2220.08 vectors/sec
+- Percentiles: P50=0.4479s, P90=0.4661s, P99=0.4932s
+
+READ PERFORMANCE (10 queries)
+- Successful queries: 10
+- Average query time: 0.0171s
+- Throughput: 58.43 queries/sec
+- Percentiles: P50=0.0175s, P90=0.0210s, P99=0.0443s
+
+READ PERFORMANCE (100 queries)
+- Successful queries: 100
+- Average query time: 0.0134s
+- Throughput: 74.72 queries/sec
+- Percentiles: P50=0.0173s, P90=0.0178s, P99=0.0192s
+
+READ PERFORMANCE (1000 queries)
+- Successful queries: 1000
+- Average query time: 0.0132s
+- Throughput: 75.71 queries/sec
+- Percentiles: P50=0.0173s, P90=0.0179s, P99=0.0192s
+
+RECALL PERFORMANCE
+- Recall@100: 1.0000
+- Standard deviation: 0.0000
+- Sample size: 50
+
+SUMMARY
+======================================================================
+Best write performance: 2220.08 vectors/sec (batch size 1000)
+Best read performance: 75.71 queries/sec (1000 queries)

@@ -1,0 +1,16 @@
+datasets
+tqdm
+numpy
+psutil
+antarys
+chromadb
+qdrant-client
+pymilvus
+pinecone
+pinecone[grpc]
+lz4
+torch
+timm
+matplotlib
+pillow
+scikit-learn
