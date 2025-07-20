@@ -1,0 +1,56 @@
+Pinecone Vector Database Benchmark Results - 2025-07-20T13:24:29.657908
+======================================================================
+
+SYSTEM INFORMATION:
+- os: Darwin 24.5.0
+- cpu: arm
+- cpu_cores: 8
+- ram_gb: 16.0
+- python_version: 3.13.2
+- architecture: 64bit
+- machine: arm64
+- timestamp: 2025-07-20T13:01:39.914549
+
+WRITE PERFORMANCE (batch size 10)
+- Total points inserted: 100000
+- Successful batches: 10000
+- Average batch time: 0.0078s
+- Throughput: 1282.97 vectors/sec
+- Percentiles: P50=0.0065s, P90=0.0113s, P99=0.0178s
+
+WRITE PERFORMANCE (batch size 100)
+- Total points inserted: 100000
+- Successful batches: 1000
+- Average batch time: 0.0399s
+- Throughput: 2507.39 vectors/sec
+- Percentiles: P50=0.0387s, P90=0.0436s, P99=0.0600s
+
+READ PERFORMANCE (10 queries)
+- Successful queries: 10
+- Average query time: 0.6552s
+- Throughput: 1.53 queries/sec
+- Percentiles: P50=0.7362s, P90=0.7896s, P99=0.8907s
+
+READ PERFORMANCE (100 queries)
+- Successful queries: 99
+- Average query time: 0.6038s
+- Throughput: 1.66 queries/sec
+- Percentiles: P50=0.4957s, P90=0.7494s, P99=1.0023s
+
+READ PERFORMANCE (1000 queries)
+- Successful queries: 967
+- Average query time: 0.5851s
+- Throughput: 1.71 queries/sec
+- Percentiles: P50=0.5115s, P90=0.7340s, P99=0.8616s
+
+RECALL PERFORMANCE
+- Recall@100: 1.0000
+- Standard deviation: 0.0000
+- Sample size: 48
+- Note: Consistency check - Pinecone Local doesn't support exact search
+
+SUMMARY
+======================================================================
+Best write performance: 2507.39 vectors/sec (batch size 100)
+Best read performance: 1.71 queries/sec (1000 queries)
+Recall@100: 1.0000

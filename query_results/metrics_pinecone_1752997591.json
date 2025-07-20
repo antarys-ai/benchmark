@@ -1,0 +1,14 @@
+{
+  "timestamp": 1752997591,
+  "collection_name": "image-embeddings-1752997590",
+  "model": "resnet34",
+  "dimensions": 512,
+  "distance": "cosine",
+  "upsert_time": 0.16931915283203125,
+  "total_vectors": 1000,
+  "wps": 5906.006398413914,
+  "query_time": 0.013099908828735352,
+  "qps": 76.33640913640913,
+  "query_image": "./test/Afghan_hound/n02088094_4261.JPEG",
+  "results_count": 10
+}

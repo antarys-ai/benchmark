@@ -1,9 +1,10 @@
 {
   "metadata": {
-    "generated_at": "2025-06-08T20:57:34.177203",
+    "generated_at": "2025-07-20T13:58:35.533600",
     "databases": [
       "Chroma",
       "Antarys",
+      "Pinecone",
       "Qdrant",
       "Milvus"
     ],
@@ -33,6 +34,18 @@
         "p99": 0.4931927680969238
       },
       "successful_batches": 100
+    },
+    "Pinecone": {
+      "throughput_vectors_per_sec": 2507.3857153924264,
+      "avg_batch_time": 0.039882176637649536,
+      "batch_size": 100,
+      "total_points": 100000,
+      "percentiles": {
+        "p50": 0.03874051570892334,
+        "p90": 0.04361138343811035,
+        "p99": 0.05996307611465453
+      },
+      "successful_batches": 1000
     },
     "Qdrant": {
       "throughput_vectors_per_sec": 743.15885654519,
@@ -124,6 +137,38 @@
         }
       }
     },
+    "Pinecone": {
+      "queries_10": {
+        "throughput_queries_per_sec": 1.5262861722527457,
+        "avg_query_time": 0.6551851272583008,
+        "successful_queries": 10,
+        "percentiles": {
+          "p50": 0.7362146377563477,
+          "p90": 0.789582085609436,
+          "p99": 0.8906959366798402
+        }
+      },
+      "queries_100": {
+        "throughput_queries_per_sec": 1.6562846523852268,
+        "avg_query_time": 0.6037609529013586,
+        "successful_queries": 99,
+        "percentiles": {
+          "p50": 0.4956998825073242,
+          "p90": 0.7493731021881104,
+          "p99": 1.0023149919509888
+        }
+      },
+      "queries_1000": {
+        "throughput_queries_per_sec": 1.7090531435419098,
+        "avg_query_time": 0.5851193122804597,
+        "successful_queries": 967,
+        "percentiles": {
+          "p50": 0.5114729404449463,
+          "p90": 0.7340078353881836,
+          "p99": 0.8616397953033448
+        }
+      }
+    },
     "Qdrant": {
       "queries_10": {
         "throughput_queries_per_sec": 10.033970446668313,
@@ -202,6 +247,12 @@
       "recall_samples": 50,
       "note": ""
     },
+    "Pinecone": {
+      "recall_at_100": 1.0,
+      "recall_std": 0.0,
+      "recall_samples": 48,
+      "note": "Consistency check - Pinecone Local doesn't support exact search"
+    },
     "Qdrant": {
       "recall_at_100": 1.0,
       "recall_std": 0.0,
@@ -235,6 +286,16 @@
       "architecture": "64bit",
       "machine": "arm64",
       "timestamp": "2025-06-08T11:35:15.186884"
+    },
+    "Pinecone": {
+      "os": "Darwin 24.5.0",
+      "cpu": "arm",
+      "cpu_cores": 8,
+      "ram_gb": 16.0,
+      "python_version": "3.13.2",
+      "architecture": "64bit",
+      "machine": "arm64",
+      "timestamp": "2025-07-20T13:01:39.914549"
     },
     "Qdrant": {
       "os": "Darwin 24.5.0",
@@ -270,6 +331,11 @@
         "batch_size": 1000
       },
       {
+        "database": "Pinecone",
+        "throughput": 2507.3857153924264,
+        "batch_size": 100
+      },
+      {
         "database": "Qdrant",
         "throughput": 743.15885654519,
         "batch_size": 1000
@@ -290,6 +356,11 @@
         "database": "Antarys",
         "throughput": 75.7091824322229,
         "avg_latency": 13.208437442779541
+      },
+      {
+        "database": "Pinecone",
+        "throughput": 1.7090531435419098,
+        "avg_latency": 585.1193122804597
       },
       {
         "database": "Qdrant",
@@ -316,6 +387,12 @@
         "p99": 19.203169345855713
       },
       {
+        "database": "Pinecone",
+        "p50": 511.4729404449463,
+        "p90": 734.0078353881836,
+        "p99": 861.6397953033447
+      },
+      {
         "database": "Qdrant",
         "p50": 34.45744514465332,
         "p90": 55.243706703186035,
@@ -340,6 +417,12 @@
         "recall": 1.0,
         "std_dev": 0.0,
         "samples": 50
+      },
+      {
+        "database": "Pinecone",
+        "recall": 1.0,
+        "std_dev": 0.0,
+        "samples": 48
       },
       {
         "database": "Qdrant",
@@ -370,6 +453,13 @@
         "p99": 493.1927680969238
       },
       {
+        "database": "Pinecone",
+        "operation": "write",
+        "p50": 38.74051570892334,
+        "p90": 43.61138343811035,
+        "p99": 59.963076114654534
+      },
+      {
         "database": "Qdrant",
         "operation": "write",
         "p50": 1344.355583190918,
@@ -389,21 +479,26 @@
     "write_throughput": [
       {
         "rank": 1,
+        "database": "Pinecone",
+        "value": 2507.3857153924264
+      },
+      {
+        "rank": 2,
         "database": "Antarys",
         "value": 2220.079935081395
       },
       {
-        "rank": 2,
+        "rank": 3,
         "database": "Chroma",
         "value": 2213.834400172162
       },
       {
-        "rank": 3,
+        "rank": 4,
         "database": "Milvus",
         "value": 1961.0982313555355
       },
       {
-        "rank": 4,
+        "rank": 5,
         "database": "Qdrant",
         "value": 743.15885654519
       }
@@ -428,6 +523,11 @@
         "rank": 4,
         "database": "Chroma",
         "value": 9.097263206915896
+      },
+      {
+        "rank": 5,
+        "database": "Pinecone",
+        "value": 1.7090531435419098
       }
     ],
     "recall": [
@@ -443,11 +543,16 @@
       },
       {
         "rank": 3,
-        "database": "Qdrant",
+        "database": "Pinecone",
         "value": 1.0
       },
       {
         "rank": 4,
+        "database": "Qdrant",
+        "value": 1.0
+      },
+      {
+        "rank": 5,
         "database": "Milvus",
         "value": 0.9996
       }
@@ -456,47 +561,52 @@
       {
         "rank": 1,
         "database": "Antarys",
-        "score": 0.925
+        "score": 0.88
       },
       {
         "rank": 2,
         "database": "Chroma",
-        "score": 0.625
+        "score": 0.64
       },
       {
         "rank": 3,
-        "database": "Qdrant",
-        "score": 0.525
+        "database": "Pinecone",
+        "score": 0.56
       },
       {
         "rank": 4,
+        "database": "Qdrant",
+        "score": 0.5
+      },
+      {
+        "rank": 5,
         "database": "Milvus",
-        "score": 0.425
+        "score": 0.42
       }
     ]
   },
   "summary": {
-    "total_databases": 4,
+    "total_databases": 5,
     "write_stats": {
-      "max_throughput": 2220.079935081395,
+      "max_throughput": 2507.3857153924264,
       "min_throughput": 743.15885654519,
-      "avg_throughput": 1784.5428557885707,
-      "median_throughput": 2087.466315763849,
-      "std_dev": 704.6597789098657
+      "avg_throughput": 1929.1114277093418,
+      "median_throughput": 2213.834400172162,
+      "std_dev": 690.5862820430417
     },
     "read_stats": {
       "max_throughput": 75.7091824322229,
-      "min_throughput": 9.097263206915896,
-      "avg_throughput": 31.52078332450242,
-      "median_throughput": 20.638343829435442,
-      "std_dev": 30.376689608616157
+      "min_throughput": 1.7090531435419098,
+      "avg_throughput": 25.55843728831032,
+      "median_throughput": 14.47612159066315,
+      "std_dev": 29.49246183281645
     },
     "recall_stats": {
       "max_recall": 1.0,
       "min_recall": 0.9996,
-      "avg_recall": 0.9999,
+      "avg_recall": 0.99992,
       "median_recall": 1.0,
-      "std_dev": 0.00019999999999997797
+      "std_dev": 0.00017888543819996348
     }
   }
 }

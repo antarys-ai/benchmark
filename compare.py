@@ -62,7 +62,7 @@ def extract_performance_metrics(results: Dict[str, Dict]) -> Dict[str, Any]:
 
     for db_name, data in results.items():
         write_results = [r for r in data.get("results", [])
-                         if r.get("operation") == "write" and r.get("batch_size") == 1000]
+                         if r.get("operation") == "write" and r.get("batch_size") == 1000 or r.get("batch_size") == 100]
         if write_results:
             best_write = max(write_results, key=lambda x: x.get("qps", 0))
             comparison_data["write_performance"][db_name] = {
