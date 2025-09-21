@@ -1,0 +1,61 @@
+Qdrant Vector Database Benchmark Results - 2025-09-04T18:52:47.052883
+======================================================================
+
+SYSTEM INFORMATION:
+- os: Darwin 24.6.0
+- cpu: arm
+- cpu_cores: 8
+- ram_gb: 16.0
+- python_version: 3.13.2
+- architecture: 64bit
+- machine: arm64
+- timestamp: 2025-09-04T18:42:57.094008
+
+WRITE PERFORMANCE (batch size 10)
+- Total points inserted: 100000
+- Successful batches: 10000
+- Average batch time: 0.0151s
+- Throughput: 662.53 vectors/sec
+- Percentiles: P50=0.0141s, P90=0.0179s, P99=0.0283s
+
+WRITE PERFORMANCE (batch size 100)
+- Total points inserted: 100000
+- Successful batches: 1000
+- Average batch time: 0.1568s
+- Throughput: 637.90 vectors/sec
+- Percentiles: P50=0.1490s, P90=0.1754s, P99=0.3418s
+
+WRITE PERFORMANCE (batch size 1000)
+- Total points inserted: 100000
+- Successful batches: 100
+- Average batch time: 1.4643s
+- Throughput: 682.90 vectors/sec
+- Percentiles: P50=1.4431s, P90=1.6062s, P99=1.9694s
+
+READ PERFORMANCE (10 queries)
+- Successful queries: 10
+- Average query time: 0.1368s
+- Throughput: 7.31 queries/sec
+- Percentiles: P50=0.0411s, P90=0.2949s, P99=0.7255s
+
+READ PERFORMANCE (100 queries)
+- Successful queries: 100
+- Average query time: 0.0407s
+- Throughput: 24.55 queries/sec
+- Percentiles: P50=0.0350s, P90=0.0561s, P99=0.0748s
+
+READ PERFORMANCE (1000 queries)
+- Successful queries: 1000
+- Average query time: 0.0370s
+- Throughput: 27.05 queries/sec
+- Percentiles: P50=0.0325s, P90=0.0536s, P99=0.0681s
+
+RECALL PERFORMANCE
+- Recall@100: 1.0000
+- Standard deviation: 0.0000
+- Sample size: 50
+
+SUMMARY
+======================================================================
+Best write performance: 682.90 vectors/sec (batch size 1000)
+Best read performance: 27.05 queries/sec (1000 queries)

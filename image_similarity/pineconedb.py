@@ -12,6 +12,10 @@ import time
 import uuid
 import json
 from pathlib import Path
+import math
+
+
+DISPLAY = 100
 
 
 class FeatureExtractor:
@@ -35,52 +39,60 @@ class FeatureExtractor:
 
 
 def display_results(query_image_path, result_images, query_time):
-    plt.figure(figsize=(15, 6))
-    plt.subplot(2, 6, 1)
+    global DISPLAY
+
+    display_images = result_images[:DISPLAY]
+    total_images = len(display_images) + 1
+
+    cols = min(6, total_images)
+    rows = math.ceil(total_images / cols)
+
+    plt.figure(figsize=(cols * 2.5, rows * 2.5))
+
+    plt.subplot(rows, cols, 1)
     query_img = Image.open(query_image_path).resize((150, 150))
     plt.imshow(query_img)
-    plt.title("Query Image")
+    plt.title("Query Image", fontsize=10, fontweight='bold')
     plt.axis('off')
 
-    for i, img_path in enumerate(result_images, start=2):
-        plt.subplot(2, 6, i)
+    for i, img_path in enumerate(display_images, start=2):
+        plt.subplot(rows, cols, i)
         img = Image.open(img_path).resize((150, 150))
         plt.imshow(img)
-        plt.title(f"Result {i - 1}")
+        plt.title(f"Result {i - 1}", fontsize=10)
         plt.axis('off')
 
-    plt.suptitle(f"Pinecone Query time: {query_time:.4f} seconds", y=1.05)
     plt.tight_layout()
 
     results_dir = Path("../query_results")
     results_dir.mkdir(exist_ok=True)
 
     timestamp = int(time.time())
-    plt.savefig(results_dir / f"result_pinecone_{timestamp}.png")
+    plt.savefig(
+        results_dir / f"result_pinecone_{timestamp}.png", dpi=150, bbox_inches='tight')
     plt.show()
 
 
 def main():
+    global DISPLAY
+
     results_dir = Path("../query_results")
     results_dir.mkdir(exist_ok=True)
 
-    # Initialize Pinecone client for local instance
     pc = PineconeGRPC(
-        api_key="pclocal",  # Required but value doesn't matter for local
+        api_key="pclocal",
         host="http://localhost:5080"
     )
 
     collection_name = f"image-embeddings-{int(time.time())}"
 
-    # Check if index exists and delete it
     try:
         if pc.has_index(collection_name):
             pc.delete_index(name=collection_name)
-            time.sleep(3)  # Wait for deletion
+            time.sleep(3)
     except Exception:
         pass
 
-    # Create new index
     pc.create_index(
         name=collection_name,
         dimension=512,
@@ -89,9 +101,9 @@ def main():
         deletion_protection="disabled"
     )
 
-    # Get the index with proper configuration for local instance
     index_host = pc.describe_index(name=collection_name).host
-    index = pc.Index(host=index_host, grpc_config=GRPCClientConfig(secure=False))
+    index = pc.Index(
+        host=index_host, grpc_config=GRPCClientConfig(secure=False))
 
     extractor = FeatureExtractor("resnet34")
 
@@ -100,7 +112,8 @@ def main():
         "collection_name": collection_name,
         "model": "resnet34",
         "dimensions": 512,
-        "distance": "cosine"
+        "distance": "cosine",
+        "display_count": DISPLAY
     }
 
     root = "./train"
@@ -120,7 +133,7 @@ def main():
                     })
 
         upsert_start = time.time()
-        # Upsert in batches for better performance
+
         batch_size = 100
         for i in range(0, len(vectors), batch_size):
             batch = vectors[i:i + batch_size]
@@ -144,7 +157,7 @@ def main():
     search_results = index.query(
         namespace="images",
         vector=query_embedding,
-        top_k=10,
+        top_k=max(DISPLAY * 2, 50),
         include_values=False,
         include_metadata=True
     )
@@ -158,7 +171,6 @@ def main():
     query_time = query_end - query_start
     qps = 1 / query_time if query_time > 0 else 0
 
-    # Handle different response formats
     matches = search_results.get("matches", []) if isinstance(search_results, dict) else getattr(search_results,
                                                                                                  'matches', [])
 
@@ -166,7 +178,8 @@ def main():
         "query_time": query_time,
         "qps": qps,
         "query_image": query_image,
-        "results_count": len(matches)
+        "results_count": len(matches),
+        "displayed_count": min(DISPLAY, len(matches))
     })
 
     print(f"Query executed in {query_time:.4f} seconds")
@@ -183,7 +196,8 @@ def main():
 
     display_results(query_image, result_images, query_time)
 
-    metrics_file = results_dir / f"metrics_pinecone_{metrics['timestamp']}.json"
+    metrics_file = results_dir / \
+        f"metrics_pinecone_{metrics['timestamp']}.json"
     with open(metrics_file, 'w') as f:
         json.dump(metrics, f, indent=2)
 
@@ -196,4 +210,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()

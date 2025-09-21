@@ -12,6 +12,10 @@ import time
 import uuid
 import json
 from pathlib import Path
+import math
+
+
+DISPLAY = 100
 
 
 class FeatureExtractor:
@@ -35,32 +39,43 @@ class FeatureExtractor:
 
 
 def display_results(query_image_path, result_images, query_time):
-    plt.figure(figsize=(15, 6))
-    plt.subplot(2, 6, 1)
+    global DISPLAY
+
+    display_images = result_images[:DISPLAY]
+    total_images = len(display_images) + 1
+
+    cols = min(6, total_images)
+    rows = math.ceil(total_images / cols)
+
+    plt.figure(figsize=(cols * 2.5, rows * 2.5))
+
+    plt.subplot(rows, cols, 1)
     query_img = Image.open(query_image_path).resize((150, 150))
     plt.imshow(query_img)
-    plt.title("Query Image")
+    plt.title("Query Image", fontsize=10, fontweight='bold')
     plt.axis('off')
 
-    for i, img_path in enumerate(result_images, start=2):
-        plt.subplot(2, 6, i)
+    for i, img_path in enumerate(display_images, start=2):
+        plt.subplot(rows, cols, i)
         img = Image.open(img_path).resize((150, 150))
         plt.imshow(img)
-        plt.title(f"Result {i - 1}")
+        plt.title(f"Result {i - 1}", fontsize=10)
         plt.axis('off')
 
-    plt.suptitle(f"ChromaDB Query time: {query_time:.4f} seconds", y=1.05)
     plt.tight_layout()
 
     results_dir = Path("../query_results")
     results_dir.mkdir(exist_ok=True)
 
     timestamp = int(time.time())
-    plt.savefig(results_dir / f"result_chromadb_{timestamp}.png")
+    plt.savefig(
+        results_dir / f"result_chromadb_{timestamp}.png", dpi=150, bbox_inches='tight')
     plt.show()
 
 
 def main():
+    global DISPLAY
+
     results_dir = Path("../query_results")
     results_dir.mkdir(exist_ok=True)
 
@@ -96,7 +111,8 @@ def main():
         "collection_name": collection_name,
         "model": "resnet34",
         "dimensions": 512,
-        "distance": "cosine"
+        "distance": "cosine",
+        "display_count": DISPLAY
     }
 
     root = "./train"
@@ -143,7 +159,7 @@ def main():
     query_start = time.time()
     search_results = collection.query(
         query_embeddings=[query_embedding],
-        n_results=10,
+        n_results=max(DISPLAY * 2, 50),
         include=["metadatas", "distances"]
     )
     query_end = time.time()
@@ -160,7 +176,8 @@ def main():
         "query_time": query_time,
         "qps": qps,
         "query_image": query_image,
-        "results_count": len(search_results["ids"][0]) if search_results["ids"] else 0
+        "results_count": len(search_results["ids"][0]) if search_results["ids"] else 0,
+        "displayed_count": min(DISPLAY, len(search_results["ids"][0]) if search_results["ids"] else 0)
     })
 
     print(f"Query executed in {query_time:.4f} seconds")
@@ -172,7 +189,8 @@ def main():
 
     display_results(query_image, result_images, query_time)
 
-    metrics_file = results_dir / f"metrics_chromadb_{metrics['timestamp']}.json"
+    metrics_file = results_dir / \
+        f"metrics_chromadb_{metrics['timestamp']}.json"
     with open(metrics_file, 'w') as f:
         json.dump(metrics, f, indent=2)
 

@@ -1,0 +1,28 @@
+{
+  "format_version": 1,
+  "collections": [
+    "image_embeddings_1758462721",
+    "image_embeddings_1758460601",
+    "image_embeddings_1758460975",
+    "image_embeddings_1758461051",
+    "image_embeddings_1758461349"
+  ],
+  "created": "2025-09-21T19:52:36.874261+06:00",
+  "last_commit": "2025-09-21T19:52:36.874261+06:00",
+  "indexing_options": {
+    "use_hnsw": true,
+    "m": 48,
+    "n": 0,
+    "ef_construction": 360,
+    "quantization": 1,
+    "num_shards": 16,
+    "parallel_construction": true,
+    "edges_per_centroid": 0,
+    "use_pq": false,
+    "num_pq_subspaces": 0,
+    "num_pq_clusters": 0,
+    "sub_region_portion": 0,
+    "vlq_max_results": 0
+  },
+  "compression": true
+}
